@@ -84,7 +84,7 @@ const AnimePage = () => {
   }
 
   return (
-    <div>
+    <div className="mt-20"> 
       {animeInfo ? (
         <>
           <AnimeInfo animeInfo={animeInfo} 
