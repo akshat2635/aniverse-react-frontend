@@ -52,9 +52,9 @@ export default function RegisterForm() {
       if (response.ok) {
         setMessage(data.message);
         setIsError(false);
-        setTimeout(() => {
-          history.push('/login'); // Using history for navigation
-        }, 5000);
+        // setTimeout(() => {
+        //   history.push('/login'); // Using history for navigation
+        // }, 5000);
       } else {
         setMessage(data.message || 'Registration failed');
         setIsError(true);
@@ -155,7 +155,7 @@ export default function RegisterForm() {
                   disabled={!passwordMatch}>
                   Sign Up
                 </button>
-                <Modal showModal={showModal} head={isError?"Error":"Success"} msg={message} link_msg={isError?'Try Again':"Go To Login"} onClose={() => {setShowModal(false); !isError?history.push('/login'):history.push('/register');}} />
+                <Modal showModal={showModal} head={isError?"Error":"Success"} msg={message} link_msg={isError?'Try Again':"Go To Login"} onClose={() => {setShowModal(false); !isError?history('/login'):history('/register');}} />
               </div>
             </form>
           </div>

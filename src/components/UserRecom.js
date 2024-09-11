@@ -128,5 +128,5 @@ export default function UserRecom() {
           }
         </div>
         )
-    }else return (<>Loading...</>)
+    }else return (<></>)
 }
