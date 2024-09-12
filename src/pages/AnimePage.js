@@ -40,8 +40,9 @@ const AnimePage = () => {
 
         if (isMounted) {
           // Take the first 5 reviews
-          const latest = data.slice(0, 4);
-          setLatestReviews(latest);
+          const filteredData = data.filter(item => item.review !== undefined);
+          const latestReviews = filteredData.slice(0, 4);
+          setLatestReviews(latestReviews);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
