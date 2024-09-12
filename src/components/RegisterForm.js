@@ -12,7 +12,7 @@ export default function RegisterForm() {
   const [isError, setIsError] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const history = useNavigate(); // Using useHistory from react-router-dom
+  const navigate = useNavigate(); // Using useHistory from react-router-dom
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -52,9 +52,9 @@ export default function RegisterForm() {
       if (response.ok) {
         setMessage(data.message);
         setIsError(false);
-        // setTimeout(() => {
-        //   history.push('/login'); // Using history for navigation
-        // }, 5000);
+        setTimeout(() => {
+          navigate('/login'); // Using history for navigation
+        }, 5000);
       } else {
         setMessage(data.message || 'Registration failed');
         setIsError(true);
@@ -155,7 +155,7 @@ export default function RegisterForm() {
                   disabled={!passwordMatch}>
                   Sign Up
                 </button>
-                <Modal showModal={showModal} head={isError?"Error":"Success"} msg={message} link_msg={isError?'Try Again':"Go To Login"} onClose={() => {setShowModal(false); !isError?history('/login'):history('/register');}} />
+                <Modal showModal={showModal} head={isError?"Error":"Success"} msg={message} link_msg={isError?'Try Again':"Go To Login"} onClose={() => {setShowModal(false); !isError?navigate('/login'):navigate('/register');}} />
               </div>
             </form>
           </div>
