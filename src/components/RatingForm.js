@@ -1,10 +1,13 @@
 import { useState , useEffect} from "react";
 import "../styles/rating.css";
+import ReviewCard from "./ReviewCard";
 
 const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
   const [userStar, setUserStar] = useState(null); // Permanent rating
   const [hoverStar, setHoverStar] = useState(null); // Temporary hover rating
   const [userReview, setUserReview] = useState("");
+  const [dateReview, setDateReview] = useState(null);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     if (token) {
@@ -19,10 +22,12 @@ const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
           });
 
           const data = await response.json();
-          // console.log(data);
+          console.log(data);
           if (response.ok) {
             setUserStar(data.rating);
             setUserReview(data.review);
+            setDateReview(new Date(data.reviewedAt).toLocaleDateString());
+            setUsername(data.username);
             setRatDisplay(true);
           } else {
             // console.log(data.message);
@@ -33,6 +38,7 @@ const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
       };
 
       fetchRating();
+      
     }
   },[token,animeId,setRatDisplay]);
 
@@ -58,6 +64,7 @@ const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
       }
 
       setRatDisplay(true);
+      setDateReview(new Date().toLocaleDateString())
     } catch (error) {
       console.error('Error:', error);
     }
@@ -71,16 +78,8 @@ const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
     <div>
       {ratDisplay ? (
         <div>
-          <span className="font-bold">Your Rating</span>: {userStar}/10
-          <div className="stars">
-            {[...Array(10)].map((_, index) => (
-              <span
-                key={index}
-                className={`fa fa-star size-5 ${index < (hoverStar ?? userStar) ? 'checked' : ''} cursor-pointer`}
-              ></span>
-            ))}
-            <h3>Your Review</h3>
-            <p>{userReview}</p>
+          <div className="w-3/4">
+            <ReviewCard username={username} stars={userStar} review={userReview} date={dateReview} />
           </div>
           <button 
             type="button" 

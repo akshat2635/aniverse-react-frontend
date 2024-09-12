@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'; // React Router's Link
 import { useAuth } from '../context/AuthContext'; // Adjust the path to your AuthContext
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
+  const { user, logout,username } = useAuth();
   const [results, setResults] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -65,6 +65,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li><Link to="/settings">Settings</Link></li> */}
+              <li><p>Hello {username}</p></li>
               <li><p onClick={logout}>Logout</p></li>
             </ul>
           </div>

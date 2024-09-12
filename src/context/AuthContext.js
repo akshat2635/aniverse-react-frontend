@@ -6,6 +6,7 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [username, setUsername] = useState(null);
   // const history = useHistory(); // React Router's equivalent to useRouter in Next.js
 
   const checkTokenExpiry = (token) => {
@@ -61,6 +62,42 @@ export const AuthContextProvider = ({ children }) => {
     return () => clearInterval(intervalId);
   }, [ refreshAccessToken]);
 
+  useEffect(() => {
+    function parseJwt(token) {
+      if (!token) {
+        throw new Error('Token is required');
+      }
+    
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        throw new Error('Invalid token format');
+      }
+    
+      const base64Url = parts[1];
+      if (!base64Url) {
+        throw new Error('No payload found in token');
+      }
+    
+      try {
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+    
+        return JSON.parse(jsonPayload);
+      } catch (e) {
+        throw new Error('Error decoding token: ' + e.message);
+      }
+    }
+    if(user){
+      const decoded = parseJwt(user.token);
+      setUsername(decoded.username);
+    }
+  }, [user]);
+
+
+
+
   const login = (token) => {
     localStorage.setItem('accessToken', token);
     setUser({ token });
@@ -75,7 +112,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout,username }}>
       {children}
     </AuthContext.Provider>
   );
