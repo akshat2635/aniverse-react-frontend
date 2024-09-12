@@ -14,6 +14,7 @@ const AnimePage = () => {
   const [token, setToken] = useState(null);
   const [animeInfo, setAnimeInfo] = useState(null);
   const [ratDisplay, setRatDisplay] = useState(false);
+  const [loading, setloading] = useState(true);
   // const [Username, setUsername] = useState(null);
   const { id } = useParams();
   const [latestReviews, setLatestReviews] = useState([]);
@@ -22,6 +23,7 @@ const AnimePage = () => {
   useEffect(() => {
     const storedToken = localStorage.getItem('accessToken');
     setToken(storedToken);
+    setloading(false);
   }, []); // Empty dependency array ensures this runs once on mount
 
 
@@ -78,7 +80,7 @@ const AnimePage = () => {
       isMounted = false;
     };
   }, [id]); // id is already included here
-
+  if(loading) return (<></>)
   if (!user) {
     return (
       <Modal
@@ -109,7 +111,7 @@ const AnimePage = () => {
           /> */}
           <div className="flex p-6 justify-around">
           {animeInfo.embed_url !== "unknown" ?
-           ( <div className="w-1/2 p-4 m-2 flex flex-col items-center">
+           ( <div className="w-2/3 p-4 m-2 flex flex-col items-center">
               <h2 className="p-3 my-3 text-xl font-semibold">Trailer of {animeInfo.title}</h2>
               <iframe 
                 width="720" 
@@ -121,7 +123,8 @@ const AnimePage = () => {
                 ></iframe>
             </div>):(<div className="w-1/2"></div>)
           }
-            <div className="w-1/4 flex flex-col gap-4 p-4">
+          {latestReviews.length>0 &&
+            <div className="w-1/4 flex flex-col gap-4 p-4 mr-8">
             <h3>Latest Reviews for {animeInfo.title.split(':')[0]}</h3>
             {latestReviews.map((review) => (
                 <ReviewCard
@@ -133,7 +136,8 @@ const AnimePage = () => {
                 />
               ))}
             </div>
-          </div>
+        }
+        </div>
           <div className="p-2 my-10 w-full flex flex-col justify-center items-center">
             <h2 className="p-3 my-3 text-xl font-semibold">Anime related to {animeInfo.title}</h2>
             <Carousel category="id" id={id} n={36} />

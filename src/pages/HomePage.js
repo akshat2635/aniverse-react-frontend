@@ -16,7 +16,7 @@ export default function HomePage() {
       <div className="p-5 my-4 flex flex-col justify-center items-center">
         <h1 className=" p-3 my-3 font-bold text-xl">Most Popular Anime</h1>
         <div className="flex items-center justify-center w-full">
-          <Carousel category="popular" id={38000} n={30}/>
+          <Carousel category="popular" n={30}/>
         </div>
       </div>
     </div>

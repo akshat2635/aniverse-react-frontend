@@ -38,9 +38,11 @@ export default function Navbar() {
           {isFocused && (
             <ul id="results" className="absolute top-full mt-1 left-0 right-0 bg-black overflow-y-auto z-50 text-white opacity-95 max-h-40 overflow-x-hidden">
               {Object.entries(results).slice(0, 5).map(([id, name]) => (
-                <li key={id} className="cursor-pointer p-1 border-black border-y-1">
-                  <Link to={`/anime/${id}`}>{name}</Link>
+                <a href={`/anime/${id}`}>
+                <li key={id} className="cursor-pointer p-1 border-black border-y-1 opacity-70 hover:opacity-100">
+                  {name}
                 </li>
+                </a>
               ))}
             </ul>
           )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import "../styles/CarouselCard.css"
 // import { useHover } from '@uidotdev/usehooks';
 
@@ -8,7 +8,7 @@ const CarouselCard = ({ aid, image, syn, title }) => {
 
   return (
     <div className='relative group overflow-hidden flex flex-col transform hover:scale-110 transition-transform duration-200'>
-      <Link to={`/anime/${aid}`}>
+      <a href={`/anime/${aid}`}>
         <div className="flip-card">
           <div className="flip-card-inner">
             <div className="flip-card-front">
@@ -24,7 +24,7 @@ const CarouselCard = ({ aid, image, syn, title }) => {
             </div>
           </div>
         </div>
-      </Link>
+      </a>
       <h1 className="mt-2 text-center font-semibold">{title}</h1>
     </div>
   );

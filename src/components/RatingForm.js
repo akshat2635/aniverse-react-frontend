@@ -1,13 +1,15 @@
 import { useState , useEffect} from "react";
 import "../styles/rating.css";
 import ReviewCard from "./ReviewCard";
+import { useAuth } from "../context/AuthContext";
 
 const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
   const [userStar, setUserStar] = useState(null); // Permanent rating
   const [hoverStar, setHoverStar] = useState(null); // Temporary hover rating
   const [userReview, setUserReview] = useState("");
   const [dateReview, setDateReview] = useState(null);
-  const [username, setUsername] = useState("");
+  // const [username1, setUsername1] = useState("");
+  const {username}=useAuth();
 
   useEffect(() => {
     if (token) {
@@ -27,7 +29,7 @@ const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
             setUserStar(data.rating);
             setUserReview(data.review);
             setDateReview(new Date(data.reviewedAt).toLocaleDateString());
-            setUsername(data.username);
+            // setUsername1(data.username);
             setRatDisplay(true);
           } else {
             // console.log(data.message);
@@ -65,6 +67,7 @@ const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
 
       setRatDisplay(true);
       setDateReview(new Date().toLocaleDateString())
+
     } catch (error) {
       console.error('Error:', error);
     }
