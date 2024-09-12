@@ -63,6 +63,6 @@ export default function Trending() {
             </div>
         )
     }else {
-        return (<>Loading....</>)
+        return (<></>)
     }
 }

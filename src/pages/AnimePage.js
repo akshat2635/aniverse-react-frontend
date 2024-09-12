@@ -119,7 +119,7 @@ const AnimePage = () => {
           </div>
         </>
       ) : (
-        <div>Loading...</div>
+        <div></div>
       )}
     </div>
   );

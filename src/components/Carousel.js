@@ -62,10 +62,10 @@ const Carousel = ({ category, id, n, filter, userRecom }) => {
   }
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto">
+    <div className="relative w-full max-w-screen-xl mx-auto">
       <div className="carousel flex relative space-x-1 " ref={carouselRef}>
         {animeInfo.map((temp, index) => (
-          <div key={index} className="carousel-item w-1/6 transition-opacity duration-500 ease-in-out">
+          <div key={index} className="carousel-item w-1/6 overflow-y-clip px-2 transition-opacity duration-500 ease-in-out">
             <CarouselCard
               aid={temp.anime_id}
               image={temp.image_url}
@@ -76,13 +76,13 @@ const Carousel = ({ category, id, n, filter, userRecom }) => {
         ))}
       </div>
       <button
-        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2"
+        className="bt absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 "
         onClick={prevSlide}
       >
         &#8592;
       </button>
       <button
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2"
+        className="bt absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2"
         onClick={nextSlide}
       >
         &#8594;

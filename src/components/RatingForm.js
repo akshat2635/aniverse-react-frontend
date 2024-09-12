@@ -1,10 +1,40 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import "../styles/rating.css";
 
 const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
   const [userStar, setUserStar] = useState(null); // Permanent rating
   const [hoverStar, setHoverStar] = useState(null); // Temporary hover rating
   const [userReview, setUserReview] = useState("");
+
+  useEffect(() => {
+    if (token) {
+      const fetchRating = async () => {
+        try {
+          const response = await fetch(`https://aniverse-backend-3gqz.onrender.com/rating/user/${animeId}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+
+          const data = await response.json();
+          // console.log(data);
+          if (response.ok) {
+            setUserStar(data.rating);
+            setUserReview(data.review);
+            setRatDisplay(true);
+          } else {
+            // console.log(data.message);
+          }
+        } catch (error) {
+          console.error('Error fetching rating:', error);
+        }
+      };
+
+      fetchRating();
+    }
+  },[token,animeId,setRatDisplay]);
 
   const handleRatingSubmit = async (e) => {
     e.preventDefault();

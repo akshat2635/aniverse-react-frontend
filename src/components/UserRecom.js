@@ -34,7 +34,7 @@ export default function UserRecom() {
                 let ratingdict={};
 
                 if (response.ok) {
-                console.log(data);
+                // console.log(data);
                 let i=0;
                 let favAnimeId = null;
                 let favRating = -1;
@@ -52,7 +52,7 @@ export default function UserRecom() {
                 setUserFav(favAnimeId);
                 // setUserFavRat(favRating);
                 } else {
-                console.log(data.message);
+                // console.log(data.message);
                 }
             } catch (error) {
                 console.error('Error fetching rating:', error);
@@ -77,7 +77,7 @@ export default function UserRecom() {
                 throw new Error('Error in fetching user recommendations');
             }
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setUserRecom(data.recommended);
             } catch (error) {
             console.error("Error while fetching recommendation",error.message)

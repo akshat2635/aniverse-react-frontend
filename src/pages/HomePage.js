@@ -8,7 +8,8 @@ export default function HomePage() {
     <div>
       <div className="flex flex-col justify-center items-center mt-24">
         <h1 className="mt-3 font-semibold text-xl">  Welcome To AniVerse</h1>
-        <h4 className=" font-semibold">Get Recommendations and details of different Anime</h4>
+        <h4 className=" font-semibold">Get Personalized Anime Recommendations</h4>
+        {/* <h4 className=" font-semibold">Rate some anime to get started</h4> */}
       </div>
       <UserRecom/>
       <Trending/>
