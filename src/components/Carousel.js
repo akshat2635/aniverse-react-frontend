@@ -65,7 +65,7 @@ const Carousel = ({ category, id, n, filter, userRecom }) => {
     <div className="relative w-full max-w-screen-xl mx-auto">
       <div className="carousel flex relative space-x-1 " ref={carouselRef}>
         {animeInfo.map((temp, index) => (
-          <div key={index} className="carousel-item w-1/6 overflow-y-clip px-2 transition-opacity duration-500 ease-in-out">
+          <div key={index} className="carousel-item w-1/6 px-2 transition-opacity duration-500 ease-in-out">
             <CarouselCard
               aid={temp.anime_id}
               image={temp.image_url}

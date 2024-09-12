@@ -7,7 +7,7 @@ const CarouselCard = ({ aid, image, syn, title }) => {
 //   const [ref, hovering] = useHover();
 
   return (
-    <div className='relative group overflow-y-hidden flex flex-col transform hover:scale-110 transition-transform duration-200'>
+    <div className='relative group overflow-hidden flex flex-col transform hover:scale-110 transition-transform duration-200'>
       <Link to={`/anime/${aid}`}>
         <div className="flip-card">
           <div className="flip-card-inner">
