@@ -81,7 +81,7 @@ const RatingForm = ({ animeId, token, ratDisplay, setRatDisplay }) => {
     <div>
       {ratDisplay ? (
         <div>
-          <div className="w-3/4">
+          <div className="w-full lg:w-64">
             <ReviewCard username={username} stars={userStar} review={userReview} date={dateReview} />
           </div>
           <button 

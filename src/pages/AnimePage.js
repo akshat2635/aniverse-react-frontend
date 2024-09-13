@@ -104,19 +104,12 @@ const AnimePage = () => {
             ratDisplay={ratDisplay}
             setRatDisplay={setRatDisplay}
           />
-          {/* <RatingForm 
-            animeId={id}
-            token={token}
-            ratDisplay={ratDisplay}
-            setRatDisplay={setRatDisplay}
-          /> */}
           <div className="flex p-6 justify-around">
           {animeInfo.embed_url !== "unknown" ?
-           ( <div className="w-2/3 p-4 m-2 flex flex-col items-center">
-              <h2 className="p-3 my-3 text-xl font-semibold">Trailer of {animeInfo.title}</h2>
+           ( <div className="w-2/3 p-4 m-2 mt-0 flex flex-col items-center flex-shrink-0">
+              <h2 className="p-3 mb-3 text-xl font-semibold">Trailer of {animeInfo.title}</h2>
               <iframe 
-                width="720" 
-                height="360" 
+                className="max-w-full w-[42rem] h-96"
                 src={animeInfo.embed_url} 
                 title={`Trailer of ${animeInfo.title}`} 
                 allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -125,8 +118,8 @@ const AnimePage = () => {
             </div>):(<div className="w-1/2"></div>)
           }
           {latestReviews.length>0 &&
-            <div className="w-1/4 flex flex-col gap-4 p-4 mr-8">
-            <h3>Latest Reviews for {animeInfo.title.split(':')[0]}</h3>
+            <div className="w-1/4 flex flex-col gap-4 p-4 mr-[1.5%]">
+            <h3 className="font-semibold">Latest Reviews for {animeInfo.title.split(':')[0]}</h3>
             {latestReviews.map((review) => (
                 <ReviewCard
                   key={review._id}
