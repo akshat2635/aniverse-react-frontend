@@ -1,13 +1,10 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import "../styles/CarouselCard.css"
-// import { useHover } from '@uidotdev/usehooks';
 
 const CarouselCard = ({ aid, image, syn, title }) => {
-//   const [ref, hovering] = useHover();
 
   return (
-    <div className='relative group overflow-hidden flex flex-col transform hover:scale-110 transition-transform duration-200'>
+    <div className='relative group overflow-hidden flex flex-col items-center transform hover:scale-110 transition-transform duration-200'>
       <a href={`/anime/${aid}`}>
         <div className="flip-card">
           <div className="flip-card-inner">
@@ -19,13 +16,12 @@ const CarouselCard = ({ aid, image, syn, title }) => {
               />
             </div>
             <div className="flip-card-back">
-              {/* <h3 className="text-lg font-bold mb-2">Synopsis</h3> */}
               <p className='text-xs'>{syn.slice(0, 350)}...</p>
             </div>
           </div>
         </div>
       </a>
-      <h1 className="mt-2 text-center font-semibold">{title}</h1>
+      <h1 className="mt-2 text-center font-semibold w-11/12">{title}</h1>
     </div>
   );
 };

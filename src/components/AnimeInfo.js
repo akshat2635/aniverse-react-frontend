@@ -1,6 +1,11 @@
 import RatingForm from "./RatingForm";
 
 const AnimeInfo = ({ animeInfo,animeId, token, ratDisplay, setRatDisplay }) => {
+    const all=((animeInfo.genres === "unknown" ? "" : animeInfo.genres) +
+    (animeInfo.themes === "unknown" ? "" : animeInfo.themes) +
+    (animeInfo.demographics === "unknown" ? "" : animeInfo.demographics)).split(' ').filter(x=>x.length>0)
+    // all=all.filter(x=>x.length>0);
+    // console.log(all);
     return (
       <div className="flex flex-col justify-center items-center p-3 m-2">
         <h1 className="text-2xl font-semibold">
@@ -8,12 +13,9 @@ const AnimeInfo = ({ animeInfo,animeId, token, ratDisplay, setRatDisplay }) => {
           {Number(animeInfo.year) !== 0 && <span> ({Number(animeInfo.year)})</span>}
         </h1>
         <p>
-          Genres: {((animeInfo.genres === "unknown" ? "" : animeInfo.genres) +
-            (animeInfo.themes === "unknown" ? "" : animeInfo.themes) +
-            (animeInfo.demographics === "unknown" ? "" : animeInfo.demographics))
-            .split(" ")
-            .join(", ")
-            .slice(0, -2)}
+          Genres: {all.map((gen)=>(
+            <a href={`/tags/${gen}`} key={gen} className="hover:bg-slate-700 px-1">{gen}</a>
+          ))}
         </p>
         <div className="flex justify-center content-center my-3 ml-16">
           <img className="p-2 m-2 w-1/5" src={animeInfo.image_url} alt="Anime" />

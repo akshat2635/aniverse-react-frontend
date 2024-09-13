@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import AnimePage from './pages/AnimePage';
 import HomePage from './pages/HomePage';
+import TagPage from './pages/TagPage';
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/anime/:id" element={<AnimePage/>} />
+        <Route path="/tags/:tag" element={<TagPage/>} />
         {/* <Route
           path="/dashboard"
           element={

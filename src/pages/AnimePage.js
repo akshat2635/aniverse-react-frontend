@@ -6,6 +6,7 @@ import Carousel from "../components/Carousel";
 // import RatingForm from "../components/RatingForm";   
 import AnimeInfo from "../components/AnimeInfo";
 import ReviewCard from "../components/ReviewCard";
+import Spinner from "../components/Spinner";
 // import TrailerSection from "./components/TrailerSection";
 
 const AnimePage = () => {
@@ -144,7 +145,9 @@ const AnimePage = () => {
           </div>
         </>
       ) : (
-        <div></div>
+        <div className="flex justify-center my-10 items-center">
+          <Spinner/>
+        </div>
       )}
     </div>
   );
