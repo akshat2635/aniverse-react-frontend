@@ -15,10 +15,10 @@ const AnimeInfo = ({ animeInfo, animeId, token, ratDisplay, setRatDisplay }) => 
         {animeInfo.title}
         {Number(animeInfo.year) !== 0 && <span> ({Number(animeInfo.year)})</span>}
       </h1>
-      <p className="text-center">
+      <p className="text-center my-1">
         Genres:{" "}
         {all.map((gen) => (
-          <a href={`/tags/${gen}`} key={gen} className="hover:bg-slate-700 px-1">
+          <a href={`/tags/${gen}`} key={gen} className="bt p-1 mx-1 bg-slate-700 rounded-md">
             {gen}
           </a>
         ))}

@@ -11,7 +11,7 @@ export default function ReviewCard({ username, date, review, stars }) {
   };
 
   return (
-    <div className="flex flex-col p-3 pt-2 rounded-lg bg-slate-200 h-auto sm:h-24">
+    <div className="flex flex-col p-3 pt-2 pb-2 rounded-2xl bg-slate-200 h-auto ">
       {/* Username and stars at the top */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -27,7 +27,7 @@ export default function ReviewCard({ username, date, review, stars }) {
 
       {/* Review in the middle */}
       {review && (
-        <div className="italic mt-1 text-[12px] sm:text-[14px] text-[#4b587c] font-normal flex-grow">
+        <div className="italic my-1 text-[12px] sm:text-[14px] text-[#4b587c] font-normal flex-grow">
           {review.length > 75 ? review.slice(0, 75) + '...' : review}
         </div>
       )}
