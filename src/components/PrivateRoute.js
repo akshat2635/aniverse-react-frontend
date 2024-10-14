@@ -1,4 +1,3 @@
-// src/components/PrivateRoute.js
 
 import { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';

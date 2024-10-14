@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // React Router's Link
-import { useAuth } from '../context/AuthContext'; // Adjust the path to your AuthContext
+import { Link } from 'react-router-dom'; 
+import { useAuth } from '../context/AuthContext'; 
 
 export default function Navbar() {
   const { user, logout,username } = useAuth();
@@ -20,19 +20,19 @@ export default function Navbar() {
 
   return (
     <div className="navbar bg-base-300">
-      <div className="flex-1 navbar-start">
+      <div className="flex-1 navbar-start w-10 sm:w-14">
         <h1 className="btn btn-ghost text-xl">
           <Link to="/">AniVerse</Link>
         </h1>
       </div>
-      <div className="flex-1 gap-10 navbar-end">
+      <div className="flex-1 gap-2 sm:gap-5 md:gap-10 navbar-end">
         <div className="form-control relative">
           <input
             type="text"
-            className="input input-bordered md:w-80"
+            className="input input-bordered w-full sm:w-40 md:w-52 lg:w-60 xl:w-80"
             onInput={handleSearch}
             onFocus={() => setIsFocused(true)}
-            onBlur={() => setTimeout(() => setIsFocused(false), 200)} // Delay to allow clicking on results
+            onBlur={() => setTimeout(() => setIsFocused(false), 200)} 
             placeholder="Search anime..."
           />
           {isFocused && (

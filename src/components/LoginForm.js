@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
-import { useAuth } from '../context/AuthContext'; // Adjust path as necessary
+import { useAuth } from '../context/AuthContext'; 
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
@@ -14,12 +14,12 @@ export default function LoginForm() {
   const [showModal, setShowModal] = useState(false);
   const { login } = useAuth();
 
-  const navigate = useNavigate(); // Replacing Next.js useRouter with React Router's useNavigate
+  const navigate = useNavigate(); 
 
   const handleModalClose = () => {
     setShowModal(false); // Close the modal
     if (!isError) {
-      navigate('/'); // Navigate if not an error
+      navigate('/'); 
     }
   };
 
